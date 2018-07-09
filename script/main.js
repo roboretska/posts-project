@@ -38,7 +38,6 @@ function main() {
 
     window.onscroll = function () {
         let lastElement = document.getElementsByClassName('cards-array-wrapper')[0].lastChild;
-
         let lastElementTop = lastElement.getBoundingClientRect().top;
         let windowHeight = document.documentElement.clientHeight;
         let topVisible = lastElementTop <= windowHeight;
@@ -127,42 +126,41 @@ function sortByTag(tags) {
     localStorage.setItem('sortBy', 'tags');
 
 
-
     sortedByTag = data.sort((a, b) => {
-            let counterA = 0;
-            let counterB = 0;
-            arr.forEach((item) => {
+        let counterA = 0;
+        let counterB = 0;
+        arr.forEach((item) => {
 
-                for (let k = 0; k < a.tags.length; k++) {
-                    if (item === a.tags[k]) {
-                        counterA++;
-                    }
-                }
-                for (let k = 0; k < b.tags.length; k++) {
-                    if (item === b.tags[k]) {
-                        counterB++;
-                    }
-                }
-            });
-
-
-            if (counterB - counterA !== 0) {
-                return counterB - counterA;
-            } else {
-                if (a.createdAt < b.createdAt) {
-                    return 1;
-                }
-                if (a.createdAt > b.createdAt) {
-                    return -1;
-                }
-                if (a.createdAt === b.createdAt) {
-                    return 0;
+            for (let k = 0; k < a.tags.length; k++) {
+                if (item === a.tags[k]) {
+                    counterA++;
                 }
             }
-
+            for (let k = 0; k < b.tags.length; k++) {
+                if (item === b.tags[k]) {
+                    counterB++;
+                }
+            }
         });
 
-    sessionStorage.setItem('dataArray', JSON.stringify(sortedByTag)) ;
+
+        if (counterB - counterA !== 0) {
+            return counterB - counterA;
+        } else {
+            if (a.createdAt < b.createdAt) {
+                return 1;
+            }
+            if (a.createdAt > b.createdAt) {
+                return -1;
+            }
+            if (a.createdAt === b.createdAt) {
+                return 0;
+            }
+        }
+
+    });
+
+    sessionStorage.setItem('dataArray', JSON.stringify(sortedByTag));
     sessionStorage.setItem('lastPostIndex', 0);
     createCard(JSON.parse(sessionStorage.getItem("dataArray")));
 
@@ -299,13 +297,11 @@ function setDataArray(data) {
     sessionStorage.setItem("dataArray", JSON.stringify(data));
     getAllTabs();
 
-    if(localStorage.getItem('sortBy') === 'tags'){
+    if (localStorage.getItem('sortBy') === 'tags') {
         console.log("Tags");
-    }else if(localStorage.getItem('sortBy') === 'date'){
+    } else if (localStorage.getItem('sortBy') === 'date') {
         console.log("Date");
     }
-    console.log(localStorage);
-
     createCard(JSON.parse(sessionStorage.getItem("dataArray")));
 }
 
@@ -316,57 +312,76 @@ function createCard(storage) {
     const lastPostIndex = sessionStorage.getItem('lastPostIndex');
     const container = document.getElementsByClassName('cards-array-wrapper')[0];
 
+    console.log(storage);
+    console.log(lastPostIndex);
+
+
     if (lastPostIndex === '0') {
         while (container.firstChild) {
             container.removeChild(container.firstChild);
         }
     }
     let i = +lastPostIndex;
-
+    console.log(i);
+    console.log(i + "       "+ POST_AMOUNT);
     //
-    for (; i < POST_AMOUNT, i + +lastPostIndex < 10; i++) {
+    for (; i < POST_AMOUNT + +lastPostIndex; i++) {
 
 
         const card = document.createElement('div');
         card.setAttribute('class', 'card-wrapper');
 
+
+        //cancel
+
+        const cardCancelButtonWrapper = document.createElement('div');
+
+        const cardCancelButton = document.createElement('button');
+        cardCancelButton.setAttribute('class', 'card-cancel');
+
+        const icon = document.createElement('i');
+        icon.setAttribute('class', "icon-cancel");
+
+
         //title
         const cardTitleWrapper = document.createElement('div');
-        // card.setAttribute('class', 'cart-title-wrapper');
+        cardTitleWrapper.setAttribute('class', 'cart-title-wrapper');
 
         const cardTitle = document.createElement('h3');
         cardTitle.innerHTML = storage[i].title;
 
         //description
         const cardDescriptionWrapper = document.createElement('div');
-        // card.setAttribute('class', 'cart-description-wrapper');
+        cardDescriptionWrapper.setAttribute('class', 'cart-description-wrapper');
 
         //cardImg
         const cardImgWrapper = document.createElement('div');
-        // card.setAttribute('class', 'cart-img-wrapper');
+        cardImgWrapper.setAttribute('class', 'cart-img-wrapper');
 
         const cardImg = document.createElement('img');
-        cardImg.setAttribute('src', storage[i].image);
-
+        cardImg.setAttribute('href', `${storage[i].image}`);
         //date
         const cardDateWrapper = document.createElement('div');
-        // card.setAttribute('class', 'cart-date-wrapper');
+        cardDateWrapper.setAttribute('class', 'cart-date-wrapper');
 
         //Tags
         const cardTagsWrapper = document.createElement('div');
-        // card.setAttribute('class', 'cart-tags-wrapper');
+        cardTagsWrapper.setAttribute('class', 'cart-tags-wrapper');
 
 
         container.appendChild(card);
+        card.appendChild(cardCancelButtonWrapper);
         card.appendChild(cardTitleWrapper);
         card.appendChild(cardDescriptionWrapper);
         card.appendChild(cardImgWrapper);
         card.appendChild(cardDateWrapper);
         card.appendChild(cardTagsWrapper);
 
+
+        cardCancelButtonWrapper.appendChild(cardCancelButton);
         cardTitleWrapper.appendChild(cardTitle);
 
-
+        cardCancelButton.appendChild(icon);
         cardDescriptionWrapper.innerHTML = `<p>${storage[i].description}</p>`;
         cardImgWrapper.appendChild(cardImg);
         cardDateWrapper.innerHTML = `<p>${storage[i].createdAt}</p>`;
@@ -374,6 +389,8 @@ function createCard(storage) {
     }
 //
     sessionStorage.setItem('lastPostIndex', i);
+    console.log(sessionStorage.getItem('lastPostIndex'));
+
 
 }
 
