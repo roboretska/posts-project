@@ -296,13 +296,15 @@ function getPosts() {
 function setDataArray(data) {
     sessionStorage.setItem("dataArray", JSON.stringify(data));
     getAllTabs();
-
+    console.log(localStorage)
     if (localStorage.getItem('sortBy') === 'tags') {
-        console.log("Tags");
+        sortByTag(localStorage.getItem('tags'));
     } else if (localStorage.getItem('sortBy') === 'date') {
-        console.log("Date");
+        sortByTimeOrder(localStorage.getItem('DataOrder'))
+    }else{
+        sortByTimeOrder('time-decrease');
     }
-    createCard(JSON.parse(sessionStorage.getItem("dataArray")));
+    // createCard(JSON.parse(sessionStorage.getItem("dataArray")));
 }
 
 function createCard(storage) {
@@ -312,8 +314,6 @@ function createCard(storage) {
     const lastPostIndex = sessionStorage.getItem('lastPostIndex');
     const container = document.getElementsByClassName('cards-array-wrapper')[0];
 
-    console.log(storage);
-    console.log(lastPostIndex);
 
 
     if (lastPostIndex === '0') {
@@ -322,94 +322,143 @@ function createCard(storage) {
         }
     }
     let i = +lastPostIndex;
-    console.log(i);
-    console.log(i + "       "+ POST_AMOUNT);
-    //
+
     for (; i < POST_AMOUNT + +lastPostIndex; i++) {
 
 
-        const card = document.createElement('div');
-        card.setAttribute('class', 'card-wrapper');
+        if (i < storage.length) {
 
 
-        //cancel
-
-        const cardCancelButtonWrapper = document.createElement('div');
-
-        const cardCancelButton = document.createElement('button');
-        cardCancelButton.setAttribute('class', 'card-cancel');
-
-        const icon = document.createElement('i');
-        icon.setAttribute('class', "icon-cancel");
+            const card = document.createElement('div');
+            card.setAttribute('class', 'card-wrapper');
 
 
-        //title
-        const cardTitleWrapper = document.createElement('div');
-        cardTitleWrapper.setAttribute('class', 'cart-title-wrapper');
+            //cancel
 
-        const cardTitle = document.createElement('h3');
-        cardTitle.innerHTML = storage[i].title;
+            const cardCancelButtonWrapper = document.createElement('div');
 
-        //description
-        const cardDescriptionWrapper = document.createElement('div');
-        cardDescriptionWrapper.setAttribute('class', 'cart-description-wrapper');
+            const cardCancelButton = document.createElement('button');
+            cardCancelButton.setAttribute('class', 'card-cancel');
+            cardCancelButton.setAttribute('value', `${i}`);
 
-        //cardImg
-        const cardImgWrapper = document.createElement('div');
-        cardImgWrapper.setAttribute('class', 'cart-img-wrapper');
-
-        const cardImg = document.createElement('img');
-        cardImg.setAttribute('href', `${storage[i].image}`);
-        //date
-        const cardDateWrapper = document.createElement('div');
-        cardDateWrapper.setAttribute('class', 'cart-date-wrapper');
-
-        //Tags
-        const cardTagsWrapper = document.createElement('div');
-        cardTagsWrapper.setAttribute('class', 'cart-tags-wrapper');
+            const icon = document.createElement('i');
+            icon.setAttribute('class', "icon-cancel");
 
 
-        container.appendChild(card);
-        card.appendChild(cardCancelButtonWrapper);
-        card.appendChild(cardTitleWrapper);
-        card.appendChild(cardDescriptionWrapper);
-        card.appendChild(cardImgWrapper);
-        card.appendChild(cardDateWrapper);
-        card.appendChild(cardTagsWrapper);
+
+            //title
+            const cardTitleWrapper = document.createElement('div');
+            cardTitleWrapper.setAttribute('class', 'cart-title-wrapper');
+
+            const cardTitle = document.createElement('h3');
+            cardTitle.innerHTML = storage[i].title;
+
+            //description
+            const cardDescriptionWrapper = document.createElement('div');
+            cardDescriptionWrapper.setAttribute('class', 'cart-description-wrapper');
+
+            //cardImg
+            const cardImgWrapper = document.createElement('div');
+            cardImgWrapper.setAttribute('class', 'cart-img-wrapper');
+
+            const cardImg = document.createElement('img');
+            cardImg.setAttribute('src', `${storage[i].image}`);
+            //date
+            const cardDateWrapper = document.createElement('div');
+            cardDateWrapper.setAttribute('class', 'cart-date-wrapper');
+
+            //Tags
+            const cardTagsWrapper = document.createElement('div');
+            cardTagsWrapper.setAttribute('class', 'cart-tags-wrapper');
 
 
-        cardCancelButtonWrapper.appendChild(cardCancelButton);
-        cardTitleWrapper.appendChild(cardTitle);
+            container.appendChild(card);
+            card.appendChild(cardCancelButtonWrapper);
+            card.appendChild(cardTitleWrapper);
+            card.appendChild(cardDescriptionWrapper);
+            card.appendChild(cardImgWrapper);
+            card.appendChild(cardDateWrapper);
+            card.appendChild(cardTagsWrapper);
 
-        cardCancelButton.appendChild(icon);
-        cardDescriptionWrapper.innerHTML = `<p>${storage[i].description}</p>`;
-        cardImgWrapper.appendChild(cardImg);
-        cardDateWrapper.innerHTML = `<p>${storage[i].createdAt}</p>`;
-        cardTagsWrapper.innerHTML = `<p>${storage[i].tags}</p>`;
+
+            cardCancelButtonWrapper.appendChild(cardCancelButton);
+            cardTitleWrapper.appendChild(cardTitle);
+
+            cardCancelButton.appendChild(icon);
+            cardDescriptionWrapper.innerHTML = `<p>${storage[i].description}</p>`;
+            cardImgWrapper.appendChild(cardImg);
+            cardDateWrapper.innerHTML = `<p>${storage[i].createdAt}</p>`;
+            cardTagsWrapper.innerHTML = `<p>${storage[i].tags}</p>`;
+        }
     }
 //
     sessionStorage.setItem('lastPostIndex', i);
-    console.log(sessionStorage.getItem('lastPostIndex'));
+    let buttons = document.getElementsByClassName('card-cancel');
+    for (let k = 0; k < buttons.length; k++) {
+        buttons[k].addEventListener('click', (event) => {
+            deleteElements(event);
+        })
 
+    }
 
 }
 
-function deleteElements() {
-    alert('Deleting now');
+function deleteElements(ev) {
+    const currentWraper = ev.currentTarget.parentElement.parentElement;
+    const buttonIndex = ev.currentTarget.value;
+    const dataArr = JSON.parse(sessionStorage.getItem('dataArray'));
+    let newArr;
+
+
+    dataArr.splice(buttonIndex, 1);
+
+    sessionStorage.setItem('dataArray', JSON.stringify(dataArr));
+
+
+ currentWraper.remove();
+    sessionStorage.setItem('lastPostIndex', 0);
+    createCard(JSON.parse(sessionStorage.getItem('dataArray')));
+    // const elCount = document.getElementsByClassName('card-wrapper').length;
+    // console.log(elCount);
+    // sessionStorage.setItem('elCount',elCount);
+
+
+
+
 }
 
 function quickSearch(value) {
     let regex = new RegExp(value, 'i');
-    console.log(regex);
-    // sessionStorage.
+    let postsArray = JSON.parse(sessionStorage.getItem("dataArray"));
+    let searchingArray;
+
+
+    searchingArray = postsArray.filter((item) => {
+        return item.title.search(regex) !== -1;
+
+    });
+
+    console.log(searchingArray);
+    sessionStorage.setItem('lastPostIndex', 0);
+
+    createCard(searchingArray);
+
+
 }
 
 function toTop() {
 
-    const lastUsefullChild = document.getElementsByClassName('card-wrapper')[9];
+
+    let lastUsefullChild;
+    if(sessionStorage.getItem('elCount')){
+        lastUsefullChild = document.getElementsByClassName('card-wrapper')[sessionStorage.getItem('elCount')];
+    }else {
+        lastUsefullChild = document.getElementsByClassName('card-wrapper')[10];
+    }
     while (lastUsefullChild.nextSibling) {
         lastUsefullChild.parentNode.removeChild(lastUsefullChild.nextSibling);
     }
 
 
 }
+

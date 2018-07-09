@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c5a892-1a64-4db5-849b-dd15744e42c8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/style/main.css" afterDir="false" />
     </list>
@@ -22,8 +20,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="472">
+              <caret line="32" column="26" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -31,8 +29,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="327" column="29" selection-start-line="327" selection-start-column="29" selection-end-line="327" selection-end-column="29" />
+            <state relative-caret-position="322">
+              <caret line="418" column="47" selection-start-line="418" selection-start-column="47" selection-end-line="418" selection-end-column="47" />
               <folding>
                 <element signature="e#600#648#0" />
                 <element signature="e#750#774#0" />
@@ -44,7 +42,8 @@
                 <element signature="n#!!block;n#sortByTimeOrder#0" />
                 <element signature="n#!!block;n#getAllTabs#0" />
                 <element signature="n#!!block;n#getPosts#0" />
-                <element signature="n#!!block;n#toTop#0" />
+                <element signature="n#!!block;n#createCard#0" />
+                <element signature="n#!!block;n#quickSearch#0" />
               </folding>
             </state>
           </provider>
@@ -53,8 +52,8 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="113" column="12" selection-start-line="113" selection-start-column="1" selection-end-line="113" selection-end-column="12" />
+            <state relative-caret-position="217">
+              <caret line="111" column="29" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -75,9 +74,7 @@
       <find>stora</find>
       <find>cards-array-wrapper</find>
       <find>getAllTabs</find>
-      <find>sortByTag</find>
       <find>tags</find>
-      <find>sess</find>
       <find>JSON</find>
       <find>localSt</find>
       <find>'tags'</find>
@@ -85,6 +82,12 @@
       <find>createCard</find>
       <find>cardImg</find>
       <find>console</find>
+      <find>sess</find>
+      <find>cre</find>
+      <find>createC</find>
+      <find>sessionStorage.getItem</find>
+      <find>sortByTag</find>
+      <find>sessionStorage.setItem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,8 +98,8 @@
       <list>
         <option value="$PROJECT_DIR$/style/fetch.js" />
         <option value="$PROJECT_DIR$/script/fetch.js" />
-        <option value="$PROJECT_DIR$/style/main.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/style/main.css" />
         <option value="$PROJECT_DIR$/script/main.js" />
       </list>
     </option>
@@ -110,7 +113,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1260" />
@@ -182,12 +185,12 @@
       <workItem from="1531127253432" duration="19437000" />
       <workItem from="1531152635092" duration="8251000" />
       <workItem from="1531162822816" duration="255000" />
-      <workItem from="1531163800302" duration="2837000" />
+      <workItem from="1531163800302" duration="11522000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65206000" />
+    <option name="totallyTimeSpent" value="73891000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
@@ -272,7 +275,8 @@
             <element signature="n#!!block;n#sortByTimeOrder#0" />
             <element signature="n#!!block;n#getAllTabs#0" />
             <element signature="n#!!block;n#getPosts#0" />
-            <element signature="n#!!block;n#toTop#0" />
+            <element signature="n#!!block;n#createCard#0" />
+            <element signature="n#!!block;n#quickSearch#0" />
           </folding>
         </state>
       </provider>
@@ -306,7 +310,8 @@
             <element signature="n#!!block;n#sortByTimeOrder#0" />
             <element signature="n#!!block;n#getAllTabs#0" />
             <element signature="n#!!block;n#getPosts#0" />
-            <element signature="n#!!block;n#toTop#0" />
+            <element signature="n#!!block;n#createCard#0" />
+            <element signature="n#!!block;n#quickSearch#0" />
           </folding>
         </state>
       </provider>
@@ -333,7 +338,8 @@
             <element signature="n#!!block;n#sortByTimeOrder#0" />
             <element signature="n#!!block;n#getAllTabs#0" />
             <element signature="n#!!block;n#getPosts#0" />
-            <element signature="n#!!block;n#toTop#0" />
+            <element signature="n#!!block;n#createCard#0" />
+            <element signature="n#!!block;n#quickSearch#0" />
           </folding>
         </state>
       </provider>
@@ -367,7 +373,8 @@
             <element signature="n#!!block;n#sortByTimeOrder#0" />
             <element signature="n#!!block;n#getAllTabs#0" />
             <element signature="n#!!block;n#getPosts#0" />
-            <element signature="n#!!block;n#toTop#0" />
+            <element signature="n#!!block;n#createCard#0" />
+            <element signature="n#!!block;n#quickSearch#0" />
           </folding>
         </state>
       </provider>
@@ -375,24 +382,24 @@
     <entry file="file://$PROJECT_DIR$/script/fetch.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/style/main.css">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="113" column="12" selection-start-line="113" selection-start-column="1" selection-end-line="113" selection-end-column="12" />
+        <state relative-caret-position="472">
+          <caret line="32" column="26" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/style/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="217">
+          <caret line="111" column="29" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="327" column="29" selection-start-line="327" selection-start-column="29" selection-end-line="327" selection-end-column="29" />
+        <state relative-caret-position="322">
+          <caret line="418" column="47" selection-start-line="418" selection-start-column="47" selection-end-line="418" selection-end-column="47" />
           <folding>
             <element signature="e#600#648#0" />
             <element signature="e#750#774#0" />
@@ -404,7 +411,8 @@
             <element signature="n#!!block;n#sortByTimeOrder#0" />
             <element signature="n#!!block;n#getAllTabs#0" />
             <element signature="n#!!block;n#getPosts#0" />
-            <element signature="n#!!block;n#toTop#0" />
+            <element signature="n#!!block;n#createCard#0" />
+            <element signature="n#!!block;n#quickSearch#0" />
           </folding>
         </state>
       </provider>
