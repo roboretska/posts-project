@@ -26,7 +26,7 @@ aside{
     width: 25%;
     min-height: 100%;
     color: floralwhite;
-    background-color: #083c5d;
+    background-color: grey;
 }
 
 .choose-sort-by-wrapper{
@@ -58,7 +58,7 @@ input[type='radio'] ~ label{
 input[name='tags'] ~ label{
     display:inline-block;
     min-width: calc(100% * (1/3)  - 5px);
-    border: 1px solid black;
+    border: 1px solid dark ;
     margin-bottom: 5px;
 }
 
@@ -97,19 +97,19 @@ a[href="#top"]{
 }
 
 input[name='tags']:checked + label{
-    background-color: darkred;
+    background-color: #083c5d;
 }
 
 input[name='tags']:hover + label{
-    background-color: lightcoral;
+    background-color: #083c5d;
 }
 
 input[type='radio']:hover + label{
-    background-color: #c0dfd9;
+    background-color: #083c5d;
 }
 
 input[type='radio']:checked + label{
-    border: 3px solid #e9ece5;
+    border: 3px solid #083c5d;
 }
 
 .card-cancel{
@@ -126,3 +126,40 @@ input[type='radio']:checked + label{
     background-color: #e9ece5;
 }
 
+input[type='text']{
+    width: 90%;
+    padding:5px 15px;
+    margin:5px 15px;
+
+}
+
+.card-wrapper{
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 5px 15px;
+}
+
+.cart-title-wrapper{
+    padding: 5px 0;
+}
+.cart-description-wrapper{
+  margin-bottom: 15px;
+    text-align: justify;
+}
+
+.cart-img-wrapper{
+    margin-bottom: 20px;
+
+}
+
+.cart-date-wrapper{
+    color: gray;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+
+}
+
+.cart-tags-wrapper{
+
+}

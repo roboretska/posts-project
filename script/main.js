@@ -101,13 +101,19 @@ function showTags(cont) {
     let tagsArray = document.getElementsByName('tags');
     for (let i = 0; i < tagsArray.length; i++) {
         tagsArray[i].addEventListener('change', () => {
-            sortByTag(tagsArray);
+            let arr = [];
+            for (let i = 0; i < tagsArray.length; i++) {
+                if (tagsArray[i].checked === true) {
+                    arr.push(tagsArray[i].value);
+                }
+            }
+            sortByTag(arr);
         })
 
     }
 }
 
-function sortByTag(tags) {
+function sortByTag(arr) {
 
     const data = JSON.parse(sessionStorage.getItem('dataArray'));
     const tagList = JSON.parse(sessionStorage.getItem('tagList'));
@@ -115,12 +121,7 @@ function sortByTag(tags) {
     let sortedByTag;
 
 
-    let arr = [];
-    for (let i = 0; i < tags.length; i++) {
-        if (tags[i].checked === true) {
-            arr.push(tags[i].value);
-        }
-    }
+console.log(arr);
 
     localStorage.setItem('tags', JSON.stringify(arr));
     localStorage.setItem('sortBy', 'tags');
@@ -298,7 +299,9 @@ function setDataArray(data) {
     getAllTabs();
     console.log(localStorage)
     if (localStorage.getItem('sortBy') === 'tags') {
-        sortByTag(localStorage.getItem('tags'));
+        console.log(typeof JSON.parse(localStorage.getItem('tags')));
+        // sortByTag(localStorage.getItem('tags'));
+        sortByTag(JSON.parse(localStorage.getItem('tags')));
     } else if (localStorage.getItem('sortBy') === 'date') {
         sortByTimeOrder(localStorage.getItem('DataOrder'))
     }else{
