@@ -1,0 +1,112 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.content-wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 20px;
+    min-height: 100vh;
+}
+
+
+
+main{
+    width: 75%;
+    min-height: 100%;
+    background-color: #e9ece5;
+    margin: 5px 15px;
+    border-radius: 0.6em;
+    padding: 10px;
+}
+
+aside{
+    width: 25%;
+    min-height: 100%;
+    background-color: #3cc47c;
+}
+
+.choose-sort-by-wrapper{
+    display: flex;
+    text-align: center;
+}
+input[type='radio']{
+    display: none;
+}
+input[type='radio'] ~ label{
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #c0dfd9;
+}
+ input[name='tags']{
+    display:none;
+}
+
+.select-sort-type{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    text-align: center;
+    margin: 10px 5px;
+}
+
+input[name='tags'] ~ label{
+    display:inline-block;
+    min-width: calc(100% * (1/3)  - 5px);
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
+
+input[name='sort-by'] ~label{
+    /*background-color: #edd9c0;*/
+    font-weight: bold;
+}
+.cards-array-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px;
+}
+.card-wrapper{
+    display: flex;
+    width: calc(100% * (1/2)  - 15px);
+    flex-direction: column;
+    text-align: center;
+
+    padding-bottom:1.5rem;
+}
+
+.cart-title-wrapper{
+    width: 100%;
+
+}
+
+
+a[href="#top"]{
+    position: fixed;
+    bottom: 15px;
+    padding: 15px 30px;
+    background-color: cornflowerblue;
+    z-index: 3000;
+}
+
+input[name='tags']:checked + label{
+    background-color: darkred;
+}
+
+input[name='tags']:hover + label{
+    background-color: lightcoral;
+}
+
+input[type='radio']:hover + label{
+    background-color: #c0dfd9;
+}
+
+input[type='radio']:checked + label{
+    background-color: mediumaquamarine;
+}
