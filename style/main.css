@@ -25,8 +25,8 @@ main{
 aside{
     width: 25%;
     min-height: 100%;
-    color: floralwhite;
-    background-color: grey;
+    color: #5a5c51;
+    background-color: #a4b1a8;
 }
 
 .choose-sort-by-wrapper{
@@ -41,7 +41,8 @@ input[type='radio'] ~ label{
     float: left;
     width: 50%;
     padding: 10px;
-    border: 1px solid #c0dfd9;
+    border: 1px solid darkgray;
+    background-color: #e3e3e3;
 }
  input[name='tags']{
     display:none;
@@ -53,17 +54,20 @@ input[type='radio'] ~ label{
     justify-content: space-between;
     text-align: center;
     margin: 10px 5px;
+    background-color: #a4b1a8;
 }
 
 input[name='tags'] ~ label{
     display:inline-block;
     min-width: calc(100% * (1/3)  - 5px);
-    border: 1px solid dark ;
+    border: 1px solid ghostwhite ;
+    border-radius: 15px;
+    padding: 5px 15px;
     margin-bottom: 5px;
+    background-color: #e3e3e3;
 }
 
 input[name='sort-by'] ~label{
-    /*background-color: #edd9c0;*/
     font-weight: bold;
 }
 .cards-array-wrapper{
@@ -91,25 +95,29 @@ input[name='sort-by'] ~label{
 a[href="#top"]{
     position: fixed;
     bottom: 15px;
-    padding: 15px 30px;
-    background-color: cornflowerblue;
+    right: 30px;
+    padding: 30px;
     z-index: 3000;
+    background-color:  #b0a18e;
+    color: #1d2120;
+    text-align: center;
+    border: 3px solid #1d2120;
 }
 
 input[name='tags']:checked + label{
-    background-color: #083c5d;
+    background-color: b5b5b7;
 }
 
 input[name='tags']:hover + label{
-    background-color: #083c5d;
+    background-color: darkgray;
 }
 
 input[type='radio']:hover + label{
-    background-color: #083c5d;
+    background-color: #c9c9c9;
 }
 
 input[type='radio']:checked + label{
-    border: 3px solid #083c5d;
+    background-color: #b5b5b7;
 }
 
 .card-cancel{
@@ -129,7 +137,8 @@ input[type='radio']:checked + label{
 input[type='text']{
     width: 90%;
     padding:5px 15px;
-    margin:5px 15px;
+    margin:50px 15px;
+    font-size: 20px;
 
 }
 
@@ -154,7 +163,6 @@ input[type='text']{
 }
 
 .cart-date-wrapper{
-    color: gray;
     letter-spacing: 2px;
     margin-bottom: 5px;
 
@@ -162,4 +170,11 @@ input[type='text']{
 
 .cart-tags-wrapper{
 
+}
+
+
+a:hover, a:link, a:active, a:visited{
+    text-decoration: none;
+    color: #1d2120;
+    font-size: 24px;
 }

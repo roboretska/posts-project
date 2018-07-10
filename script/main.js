@@ -410,7 +410,6 @@ function deleteElements(ev) {
     const currentWraper = ev.currentTarget.parentElement.parentElement;
     const buttonIndex = ev.currentTarget.value;
     const dataArr = JSON.parse(sessionStorage.getItem('dataArray'));
-    let newArr;
 
 
     dataArr.splice(buttonIndex, 1);
@@ -451,16 +450,9 @@ function quickSearch(value) {
 
 function toTop() {
 
+    sessionStorage.setItem('lastPostIndex', 0);
+    createCard(JSON.parse(sessionStorage.getItem("dataArray")));
 
-    let lastUsefullChild;
-    if(sessionStorage.getItem('elCount')){
-        lastUsefullChild = document.getElementsByClassName('card-wrapper')[sessionStorage.getItem('elCount')];
-    }else {
-        lastUsefullChild = document.getElementsByClassName('card-wrapper')[10];
-    }
-    while (lastUsefullChild.nextSibling) {
-        lastUsefullChild.parentNode.removeChild(lastUsefullChild.nextSibling);
-    }
 
 
 }
